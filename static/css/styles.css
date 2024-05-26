@@ -1,0 +1,181 @@
+html{
+    font-size: 22px;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #0E2D69;
+    background-color: #0E2D69;
+}
+
+.custom-form{
+    margin: 10px 300px;
+}
+
+.content{
+    padding: 6px;
+    border-radius: 12px;
+    background-color: white;
+}
+.paginator-height{
+    padding: 15px;
+}
+
+.content-font{
+    margin-right:45px;
+    font-size: 14px;
+    color: gray;
+}
+
+.custom-header{
+    text-align: center;
+    height: 200px;
+    line-height: 200px;
+    margin-bottom: 0;
+    color: #fff;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #0E2D69;
+    background-color: #0E2D69;
+}
+
+.main {
+    background-image: url('../img/main.png');
+    /* Інші властивості фону */
+    background-size: cover; /* Розмір зображення */
+    background-position: center; /* Позиція зображення */
+    background-repeat: no-repeat;
+    height: 600px;
+    display: flex;
+    justify-content: end;
+}
+
+.podcasts_online {
+    width: 60%;
+    background-color: rgba(248, 247, 247, 0.8);
+    align-content: center;
+
+}
+
+.podcast_online-content {
+    padding: 125px 0 220px 0;
+    width: 470px;
+    margin: 0 auto;
+}
+
+.podcasts_online h1 {
+    font-size: 40px;
+    font-weight: 100;
+}
+
+.custom-header{
+    font-weight: 700;
+}
+
+#about {
+    background-color: #fff;
+}
+
+.about-content{
+    display: flex;
+    justify-content: space-between;
+}
+#about, #contact {
+    padding: 50px 0;
+    margin-top: 50px;
+}
+
+.about-text {
+    width: 50%;
+}
+
+.about-image{
+    width: 40%;
+}
+
+.about-text h2, .contact-content h2 {
+    text-align: center;
+}
+
+
+.about-text p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+#services {
+    background-color: #0E2D69; /* Синій фон */
+    color: #fff; /* Білий текст */
+    padding: 80px 0; /* Відступи від верхнього та нижнього країв */
+}
+
+.services-content {
+    text-align: center; /* Вирівнювання тексту по центру */
+}
+
+.services-content h2 {
+    font-size: 36px; /* Розмір заголовку */
+    margin-bottom: 30px; /* Відступ від нижнього краю заголовка */
+}
+
+.services-content p {
+    font-size: 18px; /* Розмір тексту */
+    margin-bottom: 40px; /* Відступ від нижнього краю тексту */
+}
+
+.services-content ul {
+    list-style-type: none; /* Відключення маркерів списку */
+    padding: 0; /* Відступи від країв списку */
+}
+
+.services-content ul li {
+    font-size: 16px; /* Розмір тексту елементів списку */
+    margin-bottom: 20px; /* Відступ між елементами списку */
+    position: relative; /* Встановлення позиції */
+}
+
+.services-content ul li:before {
+    content: "\2022"; /* Символ "•" */
+    color: #007bff; /* Синій колір символу */
+    display: inline-block; /* Відображення як блок */
+    width: 1em; /* Ширина символу */
+    margin-left: -1em; /* Зсув вліво на ширину символу */
+    position: absolute; /* Абсолютна позиція */
+    left: 0; /* Зсув вліво до початку тексту */
+    top: 50%; /* Вертикальне центрування */
+    transform: translateY(-50%); /* Коректування вертикального центрування */
+}
+
+
+.contact-content form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-content form input, .contact-content form textarea {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.contact-content form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-content form button:hover {
+    background-color: #0056b3;
+}
+

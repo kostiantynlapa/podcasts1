@@ -1,0 +1,357 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    <title>Home - Podcasts</title>
+{% endblock %}
+
+{% block content %}
+<section class="main_sec">
+    <div class="container">
+        <div class="main">
+            <div class="podcasts_online">
+                <div class="podcast_online-content">
+                    <h1>PODCASTS ONLINE</h1>
+                    <p>Come see us live without a net when we visit a city near you. Or,
+                        thanks to the marvels of air travel, it doesn’t even have to be all that near.
+                    </p>
+                    <a href="#podcasts"><button>VIEW PODCASTS</button></a>
+                </div>
+            </div>
+        </div>
+        <h1 class="custom-header">Podcasts</h1>
+        <div class="content" id="podcasts">
+                <form method="get" class="sort-form">
+                    <label for="sort_by">Sort by:</label>
+                    <select name="sort_by" id="sort_by" onchange="this.form.submit()">
+                        <option value="created_time" {% if request.GET.sort_by == "created_time" %}selected{% endif %}>Date</option>
+                        <option value="title" {% if request.GET.sort_by == "title" %}selected{% endif %}>Title</option>
+                    </select>
+                </form>
+            <ul>
+                {% for post in post_list %}
+                    <li>
+                        <a href="posts/{{ post.id }}">
+                            <h3>Podcast: {{ post.title }}</h3>
+                        </a>
+                        <audio controls>
+                            <source src="{{ post.audio_file }}" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <p><a href="{{ post.audio_file }}">Download podcast</a></p>
+                        <p style="text-align: right; margin-right: 20px">{{ post.created_time.ctime }}</p>
+                        <div class="content-font"><p>{{ post.content }}</p></div>
+                        <div class="comments"><p>Comments: {{ post.comments.count }}</p></div>
+                        <hr>
+                    </li>
+                {% empty %}
+                    <p>No podcasts found.</p>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <div class="container">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>About Us</h2>
+                <p>Welcome to our podcast website! We are a team of enthusiasts who passionately explore and share interesting stories and knowledge through our podcasts.</p>
+                <p>Our mission is to provide users with access to diverse content they deserve. We believe that everyone should have the opportunity to learn and grow, and podcasts are a great way to do that with enjoyment.</p>
+                <p>Join us and add more color and knowledge to your day!</p>
+            </div>
+            <img class="about-image" src="{% static 'img/tree.jpg' %}" alt="About Us">
+        </div>
+    </div>
+</section>
+
+<section id="services">
+    <div class="container">
+        <div class="services-content">
+            <h2>Our Services</h2>
+            <p>Discover the range of services we offer to our listeners:</p>
+            <ul>
+                <li>Podcast hosting</li>
+                <li>Content creation</li>
+                <li>Guest interviews</li>
+                <li>Live events</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<script>
+    function submitForm() {
+        document.querySelector('.search-form').submit();
+    }
+</script>
+
+ <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #0E2D69;
+            background-color: #0E2D69;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            background-color: #fff;
+        }
+
+        button{
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-toggle .bar {
+            width: 25px;
+            height: 3px;
+            background-color: #0E2D69;
+            margin: 4px 0;
+            transition: 0.4s;
+        }
+
+
+        .main {
+            background-image: url({% static 'img/main.png' %});
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 600px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .podcasts_online {
+            width: 60%;
+            background-color: rgba(248, 247, 247, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .podcast_online-content {
+            padding: 125px 0 220px 0;
+            width: 470px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .podcasts_online h1 {
+            font-size: 40px;
+            font-weight: 800;
+        }
+
+        .custom-header {
+            font-weight: 700;
+        }
+
+        #about {
+            background-color: #fff;
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #about, #services {
+            padding: 50px 0;
+            margin-top: 50px;
+        }
+
+        .about-text, .about-image {
+            width: 48%;
+            margin-bottom: 20px;
+        }
+
+        .about-text h2, .services-content h2 {
+            text-align: center;
+        }
+
+        .about-text p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        #services {
+            background-color: #0E2D69;
+            color: #fff;
+            padding: 80px 0;
+        }
+
+        .services-content {
+            text-align: center;
+        }
+
+        .services-content h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        .services-content p {
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .services-content ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .services-content ul li {
+            font-size: 16px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .services-content ul li:before {
+            content: "\2022";
+            color: #007bff;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        @media (max-width: 768px) {
+            /* Зміна ширини основного контейнера та внутрішніх відступів */
+            .container {
+                padding: 0 15px;
+            }
+
+            /* Зміни для основного заголовка */
+            .main h1 {
+                font-size: 24px;
+            }
+
+            .content h3{
+                font-size: 24px;
+            }
+
+            .content p{
+                font-size: 18px;
+            }
+            /* Зміни для зображення у блоку про нас */
+            .about-image {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+
+            /* Зміни для списку послуг */
+            .services-content ul li {
+                font-size: 14px;
+                margin-bottom: 10px;
+            }
+
+            /* Зміни для аудіо контролів */
+            audio {
+                width: 100%;
+            }
+
+
+            .logo img {
+                height: auto;
+                width: 80%; /* Зменшуємо ширину зображення логотипу */
+                margin: 0 auto; /* Центруємо зображення */
+            }
+
+            nav {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #fff;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                z-index: 1000;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            nav li {
+                width: 100%;
+                text-align: center;
+                margin: 10px 0;
+            }
+        }
+        @media (max-width: 576px) {
+            .logo img {
+                width: 60%; /* Зменшуємо ще більше ширину зображення логотипу */
+            }
+
+            .main_sec .container{
+                width: 100%
+            }
+
+            .main h1 {
+                font-size: 20px;
+            }
+            .main {
+                justify-content: center; /* Вирівнюємо текст по центру */
+            }
+            .podcasts_online{
+                width: 100%
+            }
+
+            .custom-header{
+                font-size: 40px;
+
+            }
+            .main h1 {
+                font-size: 26px; /* Зменшуємо розмір шрифту заголовка */
+                text-align: center; /* Вирівнюємо текст по центру */
+                width: 90%; /* Встановлюємо ширину тексту на повну ширину */
+            }
+
+            /* Зміни для тексту про нас на маленьких екранах */
+            .about-text p {
+                font-size: 16px;
+            }
+
+            .about-text{
+                width: 100%
+            }
+
+            /* Зміни для списку послуг на маленьких екранах */
+            .services-content ul li {
+                font-size: 12px;
+            }
+
+            /* Зміни для аудіо контролів на маленьких екранах */
+            audio {
+                width: 100%;
+                height: auto; /* Забезпечуємо автоматичну висоту для кращого відображення на маленьких екранах */
+            }
+        }
+
+    </style>
+{% endblock %}

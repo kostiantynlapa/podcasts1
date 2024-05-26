@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="container">
+          <h1 class="custom-header">Post</h1>
+       <div class="content">
+            <ul>
+                <li>
+                        <h3>Podcast: {{ post.title }}</h3>
+                        <audio controls>
+                            <source src="{{ post.audio_file }}" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <p><a href="{{ post.audio_file }}">Download podcast</a></p>
+                        <p style="text-align: right; margin-right: 20px">{{ post.created_time.ctime }}</p>
+                        <div class="content-font">
+                            <p>{{ post.content }}</p>
+                        </div>
+                        <div style="text-align: center">
+                            <p><strong>Comments</strong></p>
+                        </div>
+                        <a href="{% url 'blog:create-comment' post.id %}">
+                            <button class="btn btn-primary" type="submit">
+                                Create a comment
+                            </button>
+                        <br>
+                        {% for comment in post.comments.all %}
+                            <p>Comment from <strong>{{ comment.user.username }} :</strong></p>
+                            <p class="content-font" style="font-size: 18px">{{ comment.content }}</p>
+                            <hr>
+                        {% endfor %}
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <hr>
+</div>
+
+    <style>
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        audio {
+            max-width: 100%; /* Адаптивна ширина для аудіо контролів */
+            margin-bottom: 10px; /* Додатковий відступ між аудіо контролами та наступним елементом */
+        }
+    </style>
+  {% include "includes/paginator.html" %}
+{% endblock %}
