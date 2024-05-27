@@ -11,7 +11,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
     created_time = models.DateTimeField(auto_now_add=True)
-    audio_file = models.FileField(upload_to='podcasts/')
+    audio_file = models.TextField()
 
 class Commentary(models.Model):
     user = models.ForeignKey(

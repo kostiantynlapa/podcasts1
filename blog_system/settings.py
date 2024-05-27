@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -76,6 +77,8 @@ WSGI_APPLICATION = "blog_system.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# postgres://podcasts_django_render_1tuy_user:rm0Zb3xGkLYPSAQhDUHPLKFUILTtA61k@dpg-cp9p2in109ks73ackqbg-a.oregon-postgres.render.com/podcasts_django_render_1tuy
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -83,6 +86,7 @@ DATABASES = {
     }
 }
 
+DATABASES["default"] = dj_database_url.parse("postgres://podcasts_django_render_1tuy_user:rm0Zb3xGkLYPSAQhDUHPLKFUILTtA61k@dpg-cp9p2in109ks73ackqbg-a.oregon-postgres.render.com/podcasts_django_render_1tuy")
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
