@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-our@22f*rg&v!$wgcmvtn0ur4k+_nvp@0#r$gdpin_el5l)4=q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["podcasts-3bpv.onrender.com"]
 
 
 # Application definition
